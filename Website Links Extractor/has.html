@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" />
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-1894788-5", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<meta name="title" content="Extract Links From A HTML File With PHP | #! code" />
+<link rel="canonical" href="https://www.hashbangcode.com/article/extract-links-html-file-php" />
+<meta name="description" content="Use the following function to extract all of the links from a HTML string." />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+<link rel="shortcut icon" href="/themes/custom/hashbangcode_theme/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="revision" href="/article/extract-links-html-file-php" />
+
+    <title>Extract Links From A HTML File With PHP | #! code</title>
+    <link rel="stylesheet" href="/sites/default/files/css/css_LAkcDAkBolRPACohqBd-55DBkYNrF-SxCszA_ajeteE.css?pctvwl" media="all" />
+<link rel="stylesheet" href="https://www.hashbangcode.com/sites/default/files/geshi/geshifilter-languages.css" media="all" />
+<link rel="stylesheet" href="/sites/default/files/css/css_NzqA_7zQ0Yu-ZmKbdvhDUU-eAMCusfR00TA4azyfd_I.css?pctvwl" media="all" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,700,300" media="all" />
+<link rel="stylesheet" href="/sites/default/files/css/css_txvA3sDjnRRbq8miOgzI9rqiNoKS3TyXfV2sMeBxgBc.css?pctvwl" media="all" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.3.1"></script>
+
+  </head>
+  <body class="path--node body-sidebars-second alias--article-extract-links-html-file-php nodetype--article logged-out">
+    <div id="skip">
+      <a class="visually-hidden focusable skip-link" href="#main-menu">
+        Skip to main navigation
+      </a>
+    </div>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div  class="page-standard" id="pg__c">
+
+  <!-- ______________________ BRANDING _______________________ -->
+
+  <header id="branding">
+    <div class="cog--mq mq-branding">
+              <div id="branding-region">
+            <div class="region region-branding">
+    <div id="block-hashbangcode-theme-branding" class="settings-tray-editable site-branding block block-system block-system-branding-block" data-drupal-settingstray="editable">
+  
+    
+                  <div class="site-branding-text">
+                            <div class="site-branding-name">
+                    <a href="/" title="Home" rel="home">#! code</a>
+                </div>
+                                        <div class="site-branding-slogan">Code Tips, Snippets, Resources, Tutorials And Help</div>
+                    </div>
+    </div>
+
+  </div>
+
+        </div>
+          </div>
+  </header>
+  <!-- /branding -->
+
+  <!-- ______________________ HEADER _______________________ -->
+
+  <header id="header">
+    <div class="cog--mq mq-header">
+          </div>
+  </header>
+  <!-- /header -->
+
+  <!-- ______________________ Pre content _______________________ -->
+      <div class="clearfix pre-content" id="pre-content">
+      <div class="cog--mq mq-precontent">
+          <div class="region region-pre-content">
+    
+
+<nav role="navigation" aria-labelledby="block-mainnavigation-menu" id="block-mainnavigation" class="settings-tray-editable block block-menu navigation block-system-menublock menu--main" data-drupal-settingstray="editable">
+      
+        
+              <ul class="menu">
+                  <li>
+          <a href="/" data-drupal-link-system-path="&lt;front&gt;">Home</a>
+                  </li>
+              <li>
+          <a href="/tools" data-drupal-link-system-path="tools">Tools</a>
+                  </li>
+              <li>
+          <a href="/about" data-drupal-link-system-path="node/475">About</a>
+                  </li>
+              <li>
+          <a href="/contact" data-drupal-link-system-path="node/13072">Contact</a>
+                  </li>
+          </ul>
+  
+
+
+  </nav>
+<div id="block-managedad-3" class="settings-tray-editable block block-adsense block-adsense-managed-ad-block" data-drupal-settingstray="editable">
+  
+    
+      <div class="text-align-center">
+  <div class="adsense" style="">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- link -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7150624042747617"
+     data-ad-slot="8364376968"
+     data-ad-format="link"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+</div>
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+  
+  <!-- ______________________ MAIN _______________________ -->
+
+  <div class="clearfix" id="main">
+    <div class="cog--mq mq-main">
+
+            <!-- /sidebar-first -->
+
+      <section id="content">
+
+        
+        <div id="content-area">
+            <div class="region region-content">
+    <div id="block-hashbangcode-theme-page-title" class="block block-core block-page-title-block">
+  
+    
+      
+  <h1><span>Extract Links From A HTML File With PHP</span>
+</h1>
+
+
+  </div>
+
+<article  role="article" about="/article/extract-links-html-file-php" class="entity--type-node node node--type-article node--view-mode-full">
+
+    <header>
+    
+        
+
+        <div class="submitted">
+                By <span><span lang="" about="/user/philipnorton42" typeof="schema:Person" property="schema:name" datatype="">philipnorton42</span></span>
+ on 6th March 2008    </div>
+    
+      </header>
+  
+  <div class="content">
+    
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Use the following function to extract all of the links from a HTML string.</p>
+
+<div class="geshifilter"><pre class="php geshifilter-php"><ol><li class="li1"><div class="de1"><span class="kw2">function</span> linkExtractor<span class="br0">(</span><span class="re0">$html</span><span class="br0">)</span></div></li><li class="li1"><div class="de1"><span class="br0">{</span></div></li><li class="li1"><div class="de1"> <span class="re0">$linkArray</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"> <span class="kw1">if</span><span class="br0">(</span><a href="http://www.php.net/preg_match_all"><span class="kw3">preg_match_all</span></a><span class="br0">(</span><span class="st_h">'/]*)[\"\']?[^&gt;]*&gt;(.*?)/i'</span><span class="sy0">,</span> <span class="re0">$html</span><span class="sy0">,</span> <span class="re0">$matches</span><span class="sy0">,</span> PREG_SET_ORDER<span class="br0">)</span><span class="br0">)</span><span class="br0">{</span></div></li><li class="li1"><div class="de1">  <span class="kw1">foreach</span> <span class="br0">(</span><span class="re0">$matches</span> <span class="kw1">as</span> <span class="re0">$match</span><span class="br0">)</span> <span class="br0">{</span></div></li><li class="li1"><div class="de1">   <a href="http://www.php.net/array_push"><span class="kw3">array_push</span></a><span class="br0">(</span><span class="re0">$linkArray</span><span class="sy0">,</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">(</span><span class="re0">$match</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span><span class="sy0">,</span> <span class="re0">$match</span><span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="br0">)</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1">  <span class="br0">}</span></div></li><li class="li1"><div class="de1"> <span class="br0">}</span></div></li><li class="li1"><div class="de1"> <span class="kw1">return</span> <span class="re0">$linkArray</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><span class="br0">}</span></div></li></ol></pre></div>
+
+<p>To use it just read a web page or file into a string, and pass that string to the function.  The following example reads a web page using the PHP CURL functions and then passes the result into the function to retrieve the links.</p>
+
+<div class="geshifilter"><pre class="php geshifilter-php"><ol><li class="li1"><div class="de1"><span class="re0">$url</span> <span class="sy0">=</span> <span class="st_h">'http://www.hashbangcode.com'</span><span class="sy0">;</span>	</div></li><li class="li1"><div class="de1"><span class="re0">$ch</span> <span class="sy0">=</span> <a href="http://www.php.net/curl_init"><span class="kw3">curl_init</span></a><span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_URL<span class="sy0">,</span><span class="re0">$url</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_USERAGENT<span class="sy0">,</span> <span class="st_h">'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.12) Gecko/20080201 Firefox/2.0.0.12'</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_HEADER<span class="sy0">,</span><span class="nu0">0</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_RETURNTRANSFER<span class="sy0">,</span><span class="nu0">1</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_FOLLOWLOCATION<span class="sy0">,</span><span class="nu0">0</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_setopt"><span class="kw3">curl_setopt</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="sy0">,</span>CURLOPT_TIMEOUT<span class="sy0">,</span><span class="nu0">120</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><span class="re0">$html</span> <span class="sy0">=</span> <a href="http://www.php.net/curl_exec"><span class="kw3">curl_exec</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><a href="http://www.php.net/curl_close"><span class="kw3">curl_close</span></a><span class="br0">(</span><span class="re0">$ch</span><span class="br0">)</span><span class="sy0">;</span></div></li><li class="li1"><div class="de1"><span class="kw1">echo</span> <span class="st_h">''</span> <span class="sy0">.</span> <a href="http://www.php.net/print_r"><span class="kw3">print_r</span></a><span class="br0">(</span>linkExtractor<span class="br0">(</span><span class="re0">$html</span><span class="br0">)</span><span class="sy0">,</span> <span class="kw4">true</span><span class="br0">)</span> <span class="sy0">.</span> <span class="st_h">'&lt;pre&gt;'</span><span class="sy0">;</span></div></li></ol></pre></div>
+
+<p>The function will return an array, with each element being an array containing the link location and the text that the link contains.</p></div>
+      
+  <div class="field field--name-field-category field--type-entity-reference field--label-inline">
+    <div class="field__label">Category</div>
+              <div class="field__item"><a href="/category/php-strings" hreflang="en">PHP Strings</a></div>
+          </div>
+
+  <div class="field field--name-field-tags field--type-entity-reference field--label-inline">
+    <div class="field__label">Tags</div>
+          <div class='field__items'>
+              <div class="field__item"><a href="/tag/php" hreflang="en">PHP</a></div>
+              </div>
+      </div>
+<section class="comments">
+      
+    <h2>Comments</h2>
+    
+  
+  <a id="comment-1287"></a>
+<article data-comment-user-id="0" class="js-comment comment">
+        <mark class="hidden" data-comment-timestamp="1220516836"></mark>
+        <small class="comment__permalink"><a href="/comment/1287#comment-1287" hreflang="en">Permalink</a></small>
+    <header>
+        <p><span lang="" typeof="schema:Person" property="schema:name" datatype="">Mark James</span> - Thu, 09/04/2008 - 09:27</p>
+
+    </header>
+
+    <div>
+        
+            <div class="field field--name-comment-body field--type-text-long field--label-hidden field__item">Cool Scripts.</div>
+      
+    </div>
+</article>
+<a id="comment-2198"></a>
+<article data-comment-user-id="0" class="js-comment comment">
+        <mark class="hidden" data-comment-timestamp="1431332979"></mark>
+        <small class="comment__permalink"><a href="/comment/2198#comment-2198" hreflang="en">Permalink</a></small>
+    <header>
+        <p><span lang="" typeof="schema:Person" property="schema:name" datatype="">Bilal</span> - Sun, 05/10/2015 - 21:24</p>
+
+    </header>
+
+    <div>
+        
+            <div class="field field--name-comment-body field--type-text-long field--label-hidden field__item">Hi Philip, I have similar script:
+
+<div class="geshifilter"><pre class="php geshifilter-php"><ol><li class="li1"><div class="de1"><span class="kw2">&lt;?PHP</span> <span class="re0">$page</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"><span class="re0">$URL</span> <span class="sy0">=</span> <span class="st0">"http://www.example.com"</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"><span class="re0">$page</span> <span class="sy0">=</span> <span class="sy0">@</span><a href="http://www.php.net/fopen"><span class="kw3">FOPEN</span></a><span class="br0">(</span><span class="re0">$URL</span><span class="sy0">,</span> <span class="st0">"r"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1"><span class="kw1">PRINT</span><span class="br0">(</span><span class="st0">"Links at <span class="es4">$URL</span>&lt;BR?&gt;<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1"><span class="kw1">PRINT</span><span class="br0">(</span><span class="st0">"&lt;ul&gt;<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1"><span class="kw1">WHILE</span><span class="br0">(</span><span class="sy0">!</span><a href="http://www.php.net/feof"><span class="kw3">FEOF</span></a><span class="br0">(</span><span class="re0">$page</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1">     <span class="re0">$line</span> <span class="sy0">=</span> <a href="http://www.php.net/fgets"><span class="kw3">FGETS</span></a><span class="br0">(</span><span class="re0">$page</span><span class="sy0">,</span> <span class="nu0">255</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1">     <span class="kw1">WHILE</span><span class="br0">(</span><a href="http://www.php.net/eregi"><span class="kw3">EREGI</span></a><span class="br0">(</span><span class="st0">"HREF=<span class="es1">\"</span>[^<span class="es1">\"</span>]*<span class="es1">\"</span>"</span><span class="sy0">,</span> <span class="re0">$line</span><span class="sy0">,</span> <span class="re0">$match</span><span class="br0">)</span><span class="br0">)</span> <span class="br0">{</span> </div></li><li class="li1"><div class="de1">          <span class="kw1">PRINT</span><span class="br0">(</span><span class="st0">"&lt;li&gt;"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1">          <span class="kw1">PRINT</span><span class="br0">(</span><span class="re0">$match</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1">          <span class="kw1">PRINT</span><span class="br0">(</span><span class="st0">"&lt;br /&gt;<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1">          <span class="re0">$replace</span> <span class="sy0">=</span> <a href="http://www.php.net/ereg_replace"><span class="kw3">EREG_REPLACE</span></a><span class="br0">(</span><span class="st0">"\?"</span><span class="sy0">,</span> <span class="st0">"\?"</span><span class="sy0">,</span> <span class="re0">$match</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1">          <span class="re0">$line</span> <span class="sy0">=</span> <a href="http://www.php.net/ereg_replace"><span class="kw3">EREG_REPLACE</span></a><span class="br0">(</span><span class="re0">$replace</span><span class="sy0">,</span> <span class="st0">""</span><span class="sy0">,</span> <span class="re0">$line</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1">     <span class="br0">}</span> </div></li><li class="li1"><div class="de1"><span class="br0">}</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1"><span class="kw1">PRINT</span><span class="br0">(</span><span class="st0">"&lt;/li&gt;&lt;/ul&gt;<span class="es1">\n</span>"</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"><a href="http://www.php.net/fclose"><span class="kw3">FCLOSE</span></a><span class="br0">(</span><span class="re0">$page</span><span class="br0">)</span><span class="sy0">;</span> </div></li><li class="li1"><div class="de1"> </div></li><li class="li1"><div class="de1"><span class="sy1">?&gt;</span></div></li></ol></pre></div>
+
+How do I get links only with .zip extension and without href=" and in the end of each line " as well?</div>
+      
+    </div>
+</article>
+
+
+      <h2>Add new comment</h2>
+    <form class="comment-comment-form comment-form" data-user-info-from-browser data-drupal-selector="comment-form" action="/comment/reply/node/78/field_comments" method="post" id="comment-form" accept-charset="UTF-8">
+  <div class="form-item js-form-type-textfield form-type-textfield form-item-name">
+      <label for="edit-name">Your name</label>
+        <input data-drupal-default-value="Anonymous" data-drupal-selector="edit-name" type="text" id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" />
+
+        </div>
+<div class="form-item js-form-type-email form-type-email form-item-mail">
+      <label for="edit-mail">Email</label>
+        <input data-drupal-selector="edit-mail" aria-describedby="edit-mail--description" type="email" id="edit-mail" name="mail" value="" size="30" maxlength="64" class="form-email" />
+
+            <div id="edit-mail--description" class="description">
+      The content of this field is kept private and will not be shown publicly.
+    </div>
+  </div>
+<div class="form-item js-form-type-url form-type-url form-item-homepage">
+      <label for="edit-homepage">Homepage</label>
+        <input data-drupal-selector="edit-homepage" type="url" id="edit-homepage" name="homepage" value="" size="30" maxlength="255" class="form-url" />
+
+        </div>
+<input autocomplete="off" data-drupal-selector="form-0kzeo24yszppnnloh755hlyqiwr1ujt-swed3t78w38" type="hidden" name="form_build_id" value="form-0kZEO24YszpPNNLoH755HLyQIWr1UjT-SWEd3T78w38" />
+<input data-drupal-selector="edit-comment-comment-form" type="hidden" name="form_id" value="comment_comment_form" />
+<div class="field--type-text-long field--name-comment-body field--widget-text-textarea js-form-wrapper form-wrapper" data-drupal-selector="edit-comment-body-wrapper" id="edit-comment-body-wrapper">      <div class="js-text-format-wrapper js-form-item form-item">
+  <div class="form-item js-form-type-textarea form-type-textarea form-item-comment-body-0-value">
+      <label for="edit-comment-body-0-value" class="js-form-required form-required">Comment</label>
+        <div>
+  <textarea class="js-text-full text-full form-textarea required" data-drupal-selector="edit-comment-body-0-value" id="edit-comment-body-0-value" name="comment_body[0][value]" rows="5" cols="60" placeholder="" required="required" aria-required="true"></textarea>
+</div>
+
+        </div>
+<div class="filter-wrapper js-form-wrapper form-wrapper" data-drupal-selector="edit-comment-body-0-format" id="edit-comment-body-0-format"><div class="filter-help js-form-wrapper form-wrapper" data-drupal-selector="edit-comment-body-0-format-help" id="edit-comment-body-0-format-help"><a href="/filter/tips" target="_blank" data-drupal-selector="edit-comment-body-0-format-help-about" id="edit-comment-body-0-format-help-about">About text formats</a></div>
+<input data-editor-for="edit-comment-body-0-value" type="hidden" name="comment_body[0][format]" value="plain_text" />
+<div class="filter-guidelines js-form-wrapper form-wrapper" data-drupal-selector="edit-comment-body-0-format-guidelines" id="edit-comment-body-0-format-guidelines"></div>
+</div>
+
+  </div>
+
+  </div>
+<div class="field--type-language field--name-langcode field--widget-language-select js-form-wrapper form-wrapper" data-drupal-selector="edit-langcode-wrapper" id="edit-langcode-wrapper">      
+  </div>
+  <details class="captcha js-form-wrapper form-wrapper" open="open">
+  <summary role="button" aria-expanded="true" aria-pressed="true">CAPTCHA</summary>
+  This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.
+  <input data-drupal-selector="edit-captcha-sid" type="hidden" name="captcha_sid" value="15414" />
+<input data-drupal-selector="edit-captcha-token" type="hidden" name="captcha_token" value="c36e3c9e35d6de3976e0467ae26b0f07" />
+<input data-drupal-selector="edit-captcha-response" type="hidden" name="captcha_response" value="Google no captcha" />
+<div class="g-recaptcha" data-sitekey="6LfzK1YUAAAAAGJZXeYJJdaJM6rVo4SZNpewF6cO" data-theme="light" data-type="image"></div>
+  
+</details>
+
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="op" value="Save" class="button button--primary js-form-submit form-submit" />
+</div>
+
+</form>
+
+  
+</section>
+
+  </div>
+
+<!-- /content -->
+
+  
+    <div class="links">
+    <ul class="links inline"><li class="comment-add"><a href="/article/extract-links-html-file-php#comment-form" title="Share your thoughts and opinions." hreflang="en">Add new comment</a></li></ul>
+  </div>
+<!-- /links -->
+  
+  
+</article>
+<!-- /article #node -->
+
+  </div>
+
+        </div>
+
+        
+
+      </section>
+      <!-- /content-inner /content -->
+
+              <aside class="sidebar-second sidebars" id="sidebar-second">
+            <div class="region region-sidebar-second">
+    <div class="search-block-form settings-tray-editable block block-search block-search-form-block" data-drupal-selector="search-block-form" id="block-searchform" role="search" data-drupal-settingstray="editable">
+  
+    
+      <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div class="icon"><i class="better_search"></i></div><div class="clearfix form-item js-form-type-search form-type-search form-item-keys form-no-label">
+      <label for="edit-keys" class="visually-hidden">Search</label>
+        <input title="Enter the terms you wish to search for." placeholder="Search" data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="30" maxlength="128" class="form-search" />
+
+        </div>
+<div class="visually-hidden form-actions js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search" class="button js-form-submit form-submit" />
+</div>
+
+</form>
+
+  </div>
+<div id="block-hashbangcodecategories" class="settings-tray-editable block block-hashbangcode-categories" data-drupal-settingstray="editable">
+  
+      <h2>Categories</h2>
+    
+      <div class="item-list"><ul class="list-style-none"><li><a href="/category/ansible">Ansible</a></li><li><a href="/category/apache">Apache</a></li><li><a href="/category/book-reviews">Book Reviews</a></li><li><a href="/category/css">CSS</a></li><li><a href="/category/doswindows">DOS/Windows</a></li><li><a href="/category/drupal">Drupal</a><div class="item-list"><ul><li><a href="/category/drupal-8">Drupal 8</a></li><li><a href="/category/simpletest">SimpleTest</a></li></ul></div></li><li><a href="/category/flexflash">Flex/Flash</a></li><li><a href="/category/general">General</a></li><li><a href="/category/git">Git</a></li><li><a href="/category/htmlxhtml">HTML/XHTML</a></li><li><a href="/category/javascript">JavaScript</a><div class="item-list"><ul><li><a href="/category/javascript-strings">JavaScript Strings</a></li><li><a href="/category/javascript-websites">JavaScript Websites</a></li><li><a href="/category/jquery">JQuery</a></li><li><a href="/category/mootools">MooTools</a></li><li><a href="/category/openlayers">OpenLayers</a></li><li><a href="/category/scriptaculous">Script.aculo.us</a></li></ul></div></li><li><a href="/category/linuxunix">Linux/Unix</a></li><li><a href="/category/ms-sql">MS SQL</a></li><li><a href="/category/osx">OSX</a></li><li><a href="/category/phonegap">PhoneGap</a></li><li><a href="/category/php">PHP</a><div class="item-list"><ul><li><a href="/category/phing">Phing</a></li><li><a href="/category/php-arrays">PHP Arrays</a></li><li><a href="/category/php-questions">PHP Questions</a></li><li><a href="/category/php-strings">PHP Strings</a></li><li><a href="/category/php-websites">PHP Websites</a></li><li><a href="/category/zend-framework">Zend Framework</a></li></ul></div></li><li><a href="/category/postgresql">PostgreSQL</a></li><li><a href="/category/python">Python</a></li><li><a href="/category/regular-expressions">Regular Expressions</a></li><li><a href="/category/regular-expressions-websites">Regular Expressions Websites</a></li><li><a href="/category/sql">SQL</a><div class="item-list"><ul><li><a href="/category/ms-sql-0">MS SQL</a></li><li><a href="/category/mysql">MySQL</a></li><li><a href="/category/postgresql-0">PostgreSQL</a></li></ul></div></li><li><a href="/category/vagrant">Vagrant</a></li><li><a href="/category/websites">Websites</a></li><li><a href="/category/wordpress">WordPress</a></li></ul></div>
+  </div>
+<div id="block-hashbangcode-theme-login" class="settings-tray-editable block block-user block-user-login-block" data-drupal-settingstray="editable" role="form">
+  
+      <h2>User login</h2>
+    
+      <form class="user-login-form" data-drupal-selector="user-login-form" action="/article/extract-links-html-file-php?destination=/article/extract-links-html-file-php" method="post" id="user-login-form" accept-charset="UTF-8">
+  <div class="form-item js-form-type-textfield form-type-textfield form-item-name">
+      <label for="edit-name" class="js-form-required form-required">Username</label>
+        <input autocorrect="none" autocapitalize="none" spellcheck="false" data-drupal-selector="edit-name" type="text" id="edit-name" name="name" value="" size="15" maxlength="60" class="form-text required" required="required" aria-required="true" />
+
+        </div>
+<div class="form-item js-form-type-password form-type-password form-item-pass">
+      <label for="edit-pass" class="js-form-required form-required">Password</label>
+        <input data-drupal-selector="edit-pass" type="password" id="edit-pass" name="pass" size="15" maxlength="128" class="form-text required" required="required" aria-required="true" />
+
+        </div>
+<input autocomplete="off" data-drupal-selector="form-tmocf8c1cabdrhmg1ffdtw260ewsgmw1b3txhdowyiq" type="hidden" name="form_build_id" value="form-TMocF8C1CAbdrHmg1FfDtw260EWSgMW1b3tXhdOwyIQ" />
+<input data-drupal-selector="edit-user-login-form" type="hidden" name="form_id" value="user_login_form" />
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--2"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit--2" name="op" value="Log in" class="button js-form-submit form-submit" />
+</div>
+
+</form>
+<div class="item-list"><ul><li><a href="/user/password" title="Send password reset instructions via email." class="request-password-link">Reset your password</a></li></ul></div>
+  </div>
+<div id="block-managedad-2" class="settings-tray-editable block block-adsense block-adsense-managed-ad-block" data-drupal-settingstray="editable">
+  
+    
+      <div class="text-align-center">
+  <div class="adsense" style="">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7150624042747617"
+     data-ad-slot="9611963739"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+</div>
+  </div>
+
+  </div>
+
+        </aside>
+            <!-- /sidebar-first -->
+
+    </div>
+    <!-- /cog--mq -->
+  </div>
+  <!-- /main -->
+
+  <!-- ______________________ Post content _______________________ -->
+
+      <div class="clearfix post-content" id="post-content">
+      <div class="cog--mq mq-postcontent">
+          <div class="region region-post-content">
+    <div id="block-managedad" class="settings-tray-editable block block-adsense block-adsense-managed-ad-block" data-drupal-settingstray="editable">
+  
+    
+      <div class="text-align-center">
+  <div class="adsense" style="">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- responsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7150624042747617"
+     data-ad-slot="7629879796"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  </div>
+</div>
+  </div>
+<div id="block-advertisingamazon728x90" class="settings-tray-editable block block-hashbangcode-ads block-hashbangcode-ads-amazon-728x90" data-drupal-settingstray="editable">
+  
+    
+      <iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=2&p=48&l=ez&f=ifr&linkID=aa8a5f87cecea91f34b1b42ceb5f24e3&t=philnort-21&tracking_id=philnort-21" width="728" height="90" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+  
+  <!-- ______________________ FOOTER _______________________ -->
+    <footer id="footer">
+        <div class="cog--mq mq-footer">
+
+            <div class="page-footer__col--first">
+                <p>&copy; 2018 #! code</p>
+            </div>
+
+            <div class="page-footer__col--second block-menu">
+                <ul class="menu">
+                    <li><a href="http://www.twitter.com/hashbangcode" title="You should follow us on Twitter"><span class="icon-twitter"></span> Twitter</a></li>
+                    <li><a href="http://www.facebook.com/hashbangcode" title="Keep up to date with us on Facebook"><span class="icon-facebook"></span> Facebook</a></li>
+                    <li><a href="https://plus.google.com/101844906324618028459/posts" title="Keep up to date with us on Google Plus"><span class="icon-google-plus"></span> Google+</a></li>
+                    <li><a href="http://github.com/hashbangcode" title="See our projects on github"><span class="icon-github"></span> Github</a></li>
+                    <li><a href="http://feeds2.feedburner.com/hashbangcode" title="Subscribe"><span class="icon-rss"></span> RSS</a></li>
+                </ul>
+            </div>
+
+            <div class="page-footer__col--third block-menu">
+                <ul class="menu">
+                    <li><a href="/colophon-code" title="Colophon">Colophon</a></li>
+                    <li><a href="/privacy-policy" title="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="/license" title="Colophon">Terms and License</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+    <!-- /footer -->
+
+</div>
+<!-- /page -->
+
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/78","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","ckeditor":{"timestamp":"pctvwl"},"ajaxPageState":{"libraries":"adsense\/adsense.css,captcha\/base,ckeditor\/drupal.ckeditor,codesnippet\/codesnippet.highlightjs,codesnippet\/codesnippet.style.github,cog\/lib,comment\/drupal.comment-by-viewer,core\/drupal.ajax,core\/drupal.collapse,core\/html5shiv,filter\/drupal.filter,geshifilter\/geshifilter,google_analytics\/google_analytics,hashbangcode_theme\/fontawesome,hashbangcode_theme\/fonts,hashbangcode_theme\/global_styles,system\/base","theme":"hashbangcode_theme","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true,"\/search\/node":true,"\/comment\/reply\/node\/78\/field_comments":true},"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"editor":{"formats":{"plain_text":{"format":"plain_text","editor":"ckeditor","editorSettings":{"allowedContent":{"*":{"attributes":"lang,dir","styles":false,"classes":false},"a":{"attributes":"href,hreflang","styles":false,"classes":false},"blockquote":{"attributes":"cite","styles":false,"classes":false},"cite":{"attributes":false,"styles":false,"classes":false},"code":{"attributes":false,"styles":false,"classes":false},"dd":{"attributes":false,"styles":false,"classes":false},"dl":{"attributes":false,"styles":false,"classes":false},"dt":{"attributes":false,"styles":false,"classes":false},"em":{"attributes":false,"styles":false,"classes":false},"li":{"attributes":false,"styles":false,"classes":false},"ol":{"attributes":"start,type","styles":false,"classes":false},"pre":{"attributes":false,"styles":false,"classes":false},"strong":{"attributes":false,"styles":false,"classes":false},"ul":{"attributes":"type","styles":false,"classes":false}},"contentsCss":["\/core\/modules\/ckeditor\/css\/ckeditor-iframe.css","\/core\/modules\/system\/css\/components\/align.module.css"],"customConfig":"","disableNativeSpellChecker":false,"disallowedContent":{"*":{"attributes":"on*"}},"drupalExternalPlugins":{"drupalimage":"\/core\/modules\/ckeditor\/js\/plugins\/drupalimage\/plugin.js","drupallink":"\/core\/modules\/ckeditor\/js\/plugins\/drupallink\/plugin.js"},"drupalImage_dialogTitleAdd":"Insert Image","drupalImage_dialogTitleEdit":"Edit Image","drupalLink_dialogTitleAdd":"Add Link","drupalLink_dialogTitleEdit":"Edit Link","entities":false,"extraPlugins":"drupalimage,drupallink","justifyClasses":["text-align-left","text-align-center","text-align-right","text-align-justify"],"language":"en","pasteFromWordPromptCleanup":true,"resize_dir":"vertical","stylesSet":false,"toolbar":[{"name":"Formatting","items":["Bold","Italic"]},{"name":"Links","items":["DrupalLink","DrupalUnlink"]},{"name":"Lists","items":["BulletedList","NumberedList"]},{"name":"Media","items":["Blockquote","DrupalImage"]},{"name":"Tools","items":["Source"]},"\/"]},"editorSupportsContentFiltering":true,"isXssSafe":false}}},"user":{"uid":0,"permissionsHash":"64134535bfeaeb30ead35f0c8ef3952e3a3a2ab825675ebdee3bf6ffad859efd"}}</script>
+<script src="/sites/default/files/js/js_BMeSt1lvYaUZ2s_z6a-C-dhmuquIU1aDAwzhQlL99t8.js"></script>
+<script src="/core/assets/vendor/ckeditor/ckeditor.js?v=4.8.0+2018-04-18-security-patch"></script>
+<script src="/sites/default/files/js/js_01lN9X-mIYK9pmAWbQgHbfggH7-kOS5MEedSQfanl-Y.js"></script>
+
+  </body>
+</html>
